@@ -1,0 +1,19 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: {{ include "mynats2.fullname" . }}-lb
+  labels:
+    {{- include "mynats2.labels" . | nindent 4 }}
+spec:
+  type: LoadBalancer
+  selector:
+    app.kubernetes.io/name: nats
+  ports:
+    - name: nats
+      port: 4222
+      protocol: TCP
+      targetPort: 4222
+    - name: mon
+      port: 8222
+      protocol: TCP
+      targetPort: 8222
