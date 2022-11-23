@@ -25,6 +25,10 @@ For demonstration:
 to k8s-external clients
 - Specifies a specific NATS release in `values.yaml`
 
+### Deployment
+
+`helm install -f values.yaml <deploy name> .`
+
 ## See also
 
 - [NATS Helm Chart repo: "Using NATS chart as dependency"](https://github.com/nats-io/k8s/tree/main/helm/charts/nats)
