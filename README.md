@@ -13,6 +13,8 @@ part of the NATS helm chart.
 Note that the NATS helm chart added as a dependency in `Chart.yaml`. This is a mechanism (and a responsibility) to
 set a specific version of the NATS helm chart in your project.
 
+- Set version of NATS helm chart in `Chart.yaml` then run `helm dep update`.
+
 ### values.yaml
 
 Note the namespace nesting in `values.yaml` (an additioinal `nats:` indention) that reflects subpackage.
