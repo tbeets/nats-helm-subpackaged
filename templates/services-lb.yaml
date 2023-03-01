@@ -13,7 +13,11 @@ spec:
       port: 4222
       protocol: TCP
       targetPort: 4222
-    - name: mon
+    - name: monitor
       port: 8222
       protocol: TCP
       targetPort: 8222
+    - name: metrics
+      port: 7777
+      protocol: TCP
+      targetPort: 7777
