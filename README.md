@@ -17,7 +17,7 @@ set a specific version of the NATS helm chart in your project.
 
 ### values.yaml
 
-Note the namespace nesting in `values.yaml` (an additioinal `nats:` indention) that reflects subpackage.
+Note the namespace nesting in `values.yaml` (an additional `nats:` indention) that reflects subpackage.
 
 ## This chart
 
@@ -30,6 +30,33 @@ to k8s-external clients
 ### Deployment
 
 `helm install -f values.yaml <deploy name> .`
+
+To update:
+
+`helm upgrade -f values.yaml <deploy name> .`
+
+### Verification
+
+```bash
+$ kubectl get pods
+NAME                               READY   STATUS    RESTARTS   AGE
+mynatsjsacc-box-67dd69cbdd-vgtpr   1/1     Running   0          16m
+mynatsjsacc-3                      3/3     Running   0          16m
+mynatsjsacc-2                      3/3     Running   0          15m
+mynatsjsacc-1                      3/3     Running   0          15m
+mynatsjsacc-0                      3/3     Running   0          15m
+$ kubectl exec --stdin --tty mynatsjsacc-box-67dd69cbdd-vgtpr -- /bin/sh
+~ # uptime
+ 20:47:08 up 29 min,  0 users,  load average: 0.11, 0.09, 0.04
+```
+
+```bash
+# In a nats-box shell, you can message as SYS account (user "sys"):
+nats --server "nats://sys:s3cr3t@$NATS_URL:4222" server ls
+
+# Or as the non-SYS account "js" that is JetStream enabled (user "foo"):
+nats --server "nats://foo:s3cr3t@$NATS_URL:4222" str ls
+```
 
 ## See also
 
