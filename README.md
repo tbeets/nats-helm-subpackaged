@@ -51,11 +51,11 @@ $ kubectl exec --stdin --tty mynatsjsacc-box-67dd69cbdd-vgtpr -- /bin/sh
 ```
 
 ```bash
-# In a nats-box shell, you can message as SYS account (user "sys"):
-nats --server "nats://sys:s3cr3t@$NATS_URL:4222" server ls
+# In a nats-box shell, you can message as SYS account (user System):
+nats --server "nats://System:s3cr3t@$NATS_URL:4222" server ls
 
-# Or as the non-SYS account "js" that is JetStream enabled (user "foo"):
-nats --server "nats://foo:s3cr3t@$NATS_URL:4222" str ls
+# Or as the non-SYS account AcctA that is JetStream enabled (user UserA1):
+nats --server "nats://UserA1:s3cr3t@$NATS_URL:4222" str ls
 ```
 
 ## See also

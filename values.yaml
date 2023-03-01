@@ -29,16 +29,32 @@ nats:
   auth:
     enabled: true
 
-    systemAccount: sys
+    systemAccount: SYS
 
     basic:
       accounts:
-        sys:
+        SYS:
           users:
-            - user: sys
+            - user: System
               pass: s3cr3t
-        js:
+        AcctA:
           jetstream: true
           users:
-            - user: foo
+            - user: UserA1
+              pass: s3cr3t
+            - user: UserA2
+              pass: s3cr3t
+        AcctB:
+          jetstream: true
+          users:
+            - user: UserB1
+              pass: s3cr3t
+            - user: UserB2
+              pass: s3cr3t
+        AcctC:
+          jetstream: true
+          users:
+            - user: UserC1
+              pass: s3cr3t
+            - user: UserC2
               pass: s3cr3t
