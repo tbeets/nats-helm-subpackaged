@@ -4,14 +4,41 @@
 
 nats:
   nats:
-    image: nats:2.9.8-alpine
+    image: nats:2.9.14-alpine
+    # image: synadia/nats-server:nightly
     pullPolicy: IfNotPresent
 
     jetstream:
       enabled: true
+
+    # Toggle profiling.
+    # This enables nats-server pprof (profiling) port, so you can see goroutines
+    # stacks, memory heap sizes, etc.
+    profiling:
+      enabled: true
+      port: 6000
+
   cluster:
     enabled: true
-    replicas: 3
+    replicas: 4
 
     # disable cluster advertisements when running behind a load balancer
     noAdvertise: true
+
+  # Authentication setup
+  auth:
+    enabled: true
+
+    systemAccount: sys
+
+    basic:
+      accounts:
+        sys:
+          users:
+            - user: sys
+              pass: s3cr3t
+        js:
+          jetstream: true
+          users:
+            - user: foo
+              pass: s3cr3t
