@@ -1,4 +1,4 @@
-# Default values for mynats2.
+# Default values for mynatsmtls
 # This is a YAML-formatted file.
 # Declare variables to be passed into your templates.
 
@@ -22,6 +22,7 @@ nats:
     enabled: true
     replicas: 4
 
+    # FIXME: this should be at client level, internal cluster advertisement okay AFAIK here
     # disable cluster advertisements when running behind a load balancer
     noAdvertise: true
 

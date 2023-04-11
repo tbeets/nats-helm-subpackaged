@@ -27,7 +27,28 @@ For demonstration:
 to k8s-external clients
 - Specifies a specific NATS release in `values.yaml`
 
-### Deployment
+## TLS
+
+k8s-local DNS hostnames generated dynamically:
+mynatsmtls-0, mynatsmtls-1, ...
+
+on common domain base:
+<host>.mynatsmtls.default.svc.cluster.local
+
+TLS identity cert for routes need to be scoped to *.mynatsmtls.default.svc.cluster.local
+
+no_advertise can be set to true, since there is a helper in the base helm chart (_helpers.tpl) that will look up the pod
+service name and put in advertisement (i.e. avoiding advertising IP)
+
+###### TLS Generate
+
+mkcert:
+
+RootCA.pem
+Identity cert for *.mynatsmtls.default.svc.cluster.local (route identity)
+Identity cert for 
+
+## Deployment
 
 `helm install -f values.yaml <deploy name> .`
 
@@ -35,7 +56,7 @@ To update:
 
 `helm upgrade -f values.yaml <deploy name> .`
 
-### Verification
+## Verification
 
 ```bash
 $ kubectl get pods
