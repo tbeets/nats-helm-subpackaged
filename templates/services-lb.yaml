@@ -1,9 +1,9 @@
 apiVersion: v1
 kind: Service
 metadata:
-  name: {{ include "mynatsmtls.fullname" . }}-lb
+  name: {{ include "mynats2.fullname" . }}-lb
   labels:
-    {{- include "mynatsmtls.labels" . | nindent 4 }}
+    {{- include "mynats2.labels" . | nindent 4 }}
 spec:
   type: LoadBalancer
   selector:
